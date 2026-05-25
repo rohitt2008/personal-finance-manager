@@ -12,6 +12,7 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
 
+
     @ExceptionHandler(
             MethodArgumentNotValidException.class
     )
@@ -51,6 +52,42 @@ public class GlobalExceptionHandler {
 
 
         return errors;
+
+    }
+
+
+
+
+    @ExceptionHandler(
+            RuntimeException.class
+    )
+
+    @ResponseStatus(
+            HttpStatus.CONFLICT
+    )
+
+    public Map<String,String>
+    handleRuntime(
+
+            RuntimeException ex
+
+    ) {
+
+        Map<String,String>
+                error =
+                new HashMap<>();
+
+
+        error.put(
+
+                "message",
+
+                ex.getMessage()
+
+        );
+
+
+        return error;
 
     }
 

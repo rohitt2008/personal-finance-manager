@@ -19,10 +19,27 @@ public class CategoryService {
 
 
     public String create(
-
             CreateCategoryRequest request
-
     ) {
+
+
+        if (
+
+                categoryRepository
+                        .findByName(
+                                request.getName()
+                        )
+
+                        .isPresent()
+
+        ) {
+
+            throw new RuntimeException(
+                    "Category already exists"
+            );
+
+        }
+
 
         Category category =
                 Category.builder()

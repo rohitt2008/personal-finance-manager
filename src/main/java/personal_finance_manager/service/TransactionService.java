@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import personal_finance_manager.dto.CreateTransactionRequest;
 import personal_finance_manager.entity.Transaction;
 import personal_finance_manager.repository.TransactionRepository;
+import personal_finance_manager.dto.UpdateTransactionRequest;
 
 import java.util.List;
 
@@ -69,6 +70,92 @@ public class TransactionService {
                 .deleteById(id);
 
         return "Transaction deleted";
+
+    }
+
+    public String update(
+
+            Long id,
+
+            UpdateTransactionRequest request
+
+    ) {
+
+        Transaction transaction =
+                transactionRepository
+
+                        .findById(
+                                id
+                        )
+
+                        .orElseThrow(
+
+                                () -> new RuntimeException(
+                                        "Transaction not found"
+                                )
+
+                        );
+
+
+
+        if (
+
+                request.getAmount()
+                        != null
+
+        ) {
+
+            transaction.setAmount(
+
+                    request.getAmount()
+
+            );
+
+        }
+
+
+
+        if (
+
+                request.getDescription()
+                        != null
+
+        ) {
+
+            transaction.setDescription(
+
+                    request.getDescription()
+
+            );
+
+        }
+
+
+
+        if (
+
+                request.getCategory()
+                        != null
+
+        ) {
+
+            transaction.setCategory(
+
+                    request.getCategory()
+
+            );
+
+        }
+
+
+
+        transactionRepository
+                .save(
+                        transaction
+                );
+
+
+        return "Transaction updated";
 
     }
 
