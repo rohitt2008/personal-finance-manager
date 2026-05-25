@@ -6,21 +6,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 public class UpdateTransactionRequest {
 
-
-    @Positive(
-            message =
-                    "Amount must be positive"
-    )
-
+    @Positive(message = "Amount must be positive")
     private Double amount;
-
 
     private String description;
 
-
     private String category;
-
 }
