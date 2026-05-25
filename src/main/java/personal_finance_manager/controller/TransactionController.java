@@ -52,4 +52,18 @@ public class TransactionController {
 
     }
 
+    @DeleteMapping("/{id}")
+
+    public String delete(
+
+            @PathVariable
+            Long id
+
+    ) {
+
+        return transactionService
+                .delete(id);
+
+    }
+
 }

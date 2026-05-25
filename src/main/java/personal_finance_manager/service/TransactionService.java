@@ -61,5 +61,15 @@ public class TransactionService {
                 .findAll();
 
     }
+    public String delete(
+            Long id
+    ) {
+
+        transactionRepository
+                .deleteById(id);
+
+        return "Transaction deleted";
+
+    }
 
 }
