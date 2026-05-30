@@ -35,7 +35,7 @@ Controller → Service → Repository → Database
 - **Layered Architecture**: Controller → Service → Repository
 - **DTOs**: Separate request/response objects from entities
 - **Exception Handling**: Global exception handler with `@RestControllerAdvice`
-- **Data Isolation**: All entities linked to users via `@ManyToOne` relationships
+- **Data Isolation**: All entities linked to users via `@ManyToOne` relationship
 
 ## API Endpoints
 
